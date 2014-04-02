@@ -63,7 +63,7 @@ class ProjectState(object):
         return cls(app_models)
 
     def __eq__(self, other):
-        if set(self.models.keys()) != set(other.models.keys()):
+        if set(self.models) != set(other.models):
             return False
         return all(model == other.models[key] for key, model in self.models.items())
 

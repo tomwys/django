@@ -238,7 +238,7 @@ class ManagementUtility(object):
         Returns the script's main help text, as a string.
         """
         if commands_only:
-            usage = sorted(get_commands().keys())
+            usage = sorted(get_commands())
         else:
             usage = [
                 "",

@@ -52,13 +52,13 @@ class MigrationAutodetector(object):
         # Prepare lists of old/new model keys that we care about
         # (i.e. ignoring proxy ones)
         old_model_keys = []
-        for al, mn in self.from_state.models.keys():
+        for al, mn in self.from_state.models:
             model = old_apps.get_model(al, mn)
             if not model._meta.proxy and model._meta.managed:
                 old_model_keys.append((al, mn))
 
         new_model_keys = []
-        for al, mn in self.to_state.models.keys():
+        for al, mn in self.to_state.models:
             model = new_apps.get_model(al, mn)
             if not model._meta.proxy and model._meta.managed:
                 new_model_keys.append((al, mn))
@@ -455,7 +455,7 @@ class MigrationAutodetector(object):
             for app_label in list(required_apps):
                 required_apps.update(app_dependencies.get(app_label, set()))
         # Remove all migrations that aren't needed
-        for app_label in list(changes.keys()):
+        for app_label in list(changes):
             if app_label not in required_apps:
                 del changes[app_label]
         return changes

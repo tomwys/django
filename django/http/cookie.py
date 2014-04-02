@@ -83,6 +83,6 @@ def parse_cookie(cookie):
     else:
         c = cookie
     cookiedict = {}
-    for key in c.keys():
+    for key in c:
         cookiedict[key] = c.get(key).value
     return cookiedict

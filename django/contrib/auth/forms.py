@@ -380,7 +380,7 @@ class AdminPasswordChangeForm(forms.Form):
 
     def _get_changed_data(self):
         data = super(AdminPasswordChangeForm, self).changed_data
-        for name in self.fields.keys():
+        for name in self.fields:
             if name not in data:
                 return []
         return ['password']
